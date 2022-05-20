@@ -19,18 +19,18 @@
     "no-console": "warn",
     "indent": [
       "error",
-      4,
+      2,
       {
         "SwitchCase": 1,
         "ignoreComments": true
       }
     ],
     "quotes": [
-      "error", 
-      "single",
-      { 
+      "error",
+      "double",
+      {
         "avoidEscape": true,
-        "allowTemplateLiterals": true 
+        "allowTemplateLiterals": true
       }
     ],
     "no-multi-spaces": [
@@ -59,7 +59,7 @@
         "after": true,
         "overrides": {
           "if": {
-            "after": false
+            "after": true
           },
           "for": {
             "after": false
@@ -80,6 +80,9 @@
       }
     ],
     "array-bracket-spacing": "error",
-    "no-unused-vars": ["error", { "args": "none", "varsIgnorePattern": "skip|test"}]
+    "no-unused-vars": [
+      "error",
+      { "args": "none", "varsIgnorePattern": "skip|test" }
+    ]
   }
 }
