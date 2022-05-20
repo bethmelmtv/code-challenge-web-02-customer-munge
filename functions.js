@@ -4,8 +4,11 @@ Output:
 */
 
 export function greetUsers(customers) {
-     // just map over them to make a greeting
-    return true;
+  // just map over them to make a greeting
+  const greeting = customers.map(
+    (customer) => `Hello ${customer.first_name} ${customer.last_name}`
+  );
+  return greeting;
 }
 
 /* 
@@ -14,20 +17,29 @@ Output:
 */
 
 export function greetUsersOverAge60(customers) {
-    return customers
-        // first, filter over the user to get the ones over 60
-        // then map over them to make a greeting
+  // first, filter over the user to get the ones over 60
+  const overSixty = customers.map(({ age }) => age > 60);
+  // then map over them to make a greeting
+  const elderGreeting = overSixty.map(
+    ({ first_name, last_name }) => `Hello ${first_name} ${last_name}`
+  );
+  return elderGreeting;
 }
-
 
 /* 
 Output: 
-4532
+2125
 */
 
 export function addAllAges(customers) {
-    // reduce through the customers to make a sum
-    return true;
+  // reduce through the customers to make a sum
+  const sum = customers.reduce(
+    (accumulater, currentPerson) => accumulater + currentPerson.age,
+    0
+    // accululamtor starts at 0, which is line 38
+  );
+
+  return sum;
 }
 
 /* 
@@ -36,10 +48,15 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    // map through to make an array of cool factors
-    // then reduce through that array to get a sum
-    // then divide by the total number of customers
-    return true;
+  const cool = [];
+  // map through to make an array of cool factors
+  const factors = customers.map(({ cool_factor }) => cool.push(cool_factor));
+  // then reduce through that array to get a sum
+  factors.reduce((accumulator, currentPerson) => {
+    const numbersofar = accumulator + currentPerson.cool_factor;
+    return numbersofar / customers.length;
+  }, 0);
+  // then divide by the total number of customers
 }
 
 /* 
@@ -53,7 +70,18 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+  // customers.map(({gender}) => total.push(gender));
+
+  customers.reduce((accumulator, customer) => {
+    //accumulator is the previous value,
+    if (accumulator[customer.gender]) {
+      accumulator[customer.gender]++;
+    } else {
+      accumulator[customer.gender] = 1;
+    }
+
+    return accumulator;
+  }, {});
 }
 
 /* 
@@ -67,7 +95,18 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+  //get all customers who have Fords
+  //then filter by gender and accumulate by gender
+  const fordOwners = customers.map((customer) => customer.car_make === "Ford");
+
+  fordOwners.reduce((accumulator, gender) => {
+    if (accumulator[gender.type]) {
+      accumulator[gender.type]++;
+    } else {
+      accumulator[gender.type] = 1;
+    }
+    return accumulator;
+  }, {});
 }
 
 /* 
@@ -88,7 +127,13 @@ Output:
 */
 
 export function getGenderBreakdownOfEachCar(customers) {
-    return true;
+  //get all the customers
+  //get all car makes and put in my accumulator
+  //our filter will be inside our reduce
+  //filter is inside for that specific fcar make
+  //
+  //use reduce twice
+  return true;
 }
 
 /* 
@@ -101,9 +146,8 @@ Output:
 }
 */
 
-
 export function getAllCoolFactorsOfEachCar(customers) {
-    return true;
+  return true;
 }
 
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
@@ -111,7 +155,6 @@ export function getAllCoolFactorsOfEachCar(customers) {
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
 /////////////////////////////// STRETCH GOALS ///////////////////////////////////////
-
 
 /* 
 Output: 
@@ -123,9 +166,8 @@ Output:
 */
 
 export function getAverageCoolFactorOfEachCar(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -145,7 +187,7 @@ Output:
 */
 
 export function makeAgeBrackets(customers) {
-    return true;
+  return true;
 }
 
 /* 
@@ -162,9 +204,8 @@ Output:
 */
 
 export function getCoolFactorsByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
 
 /* 
 Output: 
@@ -181,6 +222,5 @@ Output:
 */
 
 export function getAverageCoolFactorByAgeBracket(customers) {
-    return true;
+  return true;
 }
-
